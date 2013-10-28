@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Colegiobq</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+   <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyDZSrXvdUNa9eOsa_Fqh_Ogs5KBARM-8r8&sensor=true" %>
+    <%= javascript_include_tag "http://maps.googleapis.com/maps/api/geocode/json?parameters" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="user_nav">
+    <% if current_user %>
+    logged in as <%= current_user.email %>
+    <%= link_to "log out" , log_out_path%>
+    <% else %>
+     <!--  <%= link_to "Sign up" , sign_up_path%> -->
+      <%= link_to "log in" , log_in_path%>
+    <% end %>
+  </div>
+	<% flash.each do |name, msg| %>
+  <%= content_tag :div, msg, :id => "flash_#{name}"%>
+  <%end%>
+
+<%= yield %>
+
+</body>
+</html>

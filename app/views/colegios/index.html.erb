@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TUCOLEGIOBQ</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+   
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyDZSrXvdUNa9eOsa_Fqh_Ogs5KBARM-8r8&sensor=true" %>
+    <%= javascript_include_tag "http://maps.googleapis.com/maps/api/geocode/json?parameters" %>
+
+    <%= stylesheet_link_tag "style1" %>
+    
+</head>   
+ <body>
+  <div class="title">TuColegioBQ
+  </div>
+  <div class="menu"><a data-no-turbolink="true" href="/colegios">INCIO</a> | BUSQUEDA AVANZADA | <a href="/adm_board">ADM</a> | CREDITOS</div>
+  </div>
+  <div id="map-canvas">
+  </div>
+  <div id="map-side">
+    <div id="informacion-latlng">
+    <div id="lat" style="display: none;"> </div>
+    <div id="lng" style="display: none;"> </div> 
+  </div>
+  <div id="informacion-form">
+    <t1>Digite su dirección:</t1><br><br>
+    <input type="text"  id="address" value="calle 72 #38 barranquilla colombia"><br>
+    <button onclick="cambiarDireccion()">Ubícate</button>
+    <%= form_for(:query,{url: result_colegios_path, method: :get}) do |f| %>
+      <%= f.hidden_field :latitude , id:"lat-form" %><br />
+      <%= f.hidden_field :longitude , id:"lng-form" %>
+      <%= f.submit "Buscar Colegios"%>
+    <% end %>     
+  </div>
+    </div>
+    <div id="space1"><p>Bienvenido a TuColegioBQ, esta pagina te ayudara a encontrar tu colegio ideal!. <br>
+    Te invitamos a que pruebes nuestros servicios.<br>
+     Puedes iniciar dandole click al mapa para fijar tu direccion.<br><br> <i>Si lo deseas tambien puedes escribir directamente en tu direccion en el recuadro de abajo.</i><br><br> Si deseas hacer una busqueda mas extensa puedes usar nuestra busqueda avanzada [LINK]</p>  </div>
+    <div id="space2"> <%= image_tag("clickarrow.gif", :alt => "click arrow") %> </div>
+    <div id="space3">  </div>
+
+  </body>
+
+<%= javascript_include_tag "maps" %>
+</html>

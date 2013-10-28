@@ -1,0 +1,51 @@
+<head>
+<%= stylesheet_link_tag "style1" %>
+</head>
+
+<body>
+<div class="title">TuColegioBQ
+  </div>
+  <div class="menu"><a data-no-turbolink="true" href="/colegios">INCIO</a> | BUSQUEDA AVANZADA | <a href="/adm_board">ADM</a> | CREDITOS</div>
+  </div>
+
+  <div id="contenido_adm">
+<% if current_user %>
+<h1><br> Admin Board </h1>
+<table class="center">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Direccion</th>
+      <th>Nivel del ICfes</th>
+      <th>Enfasis</th>
+      <th>Estrato</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @colegios.each do |colegio| %>
+      <tr>
+        <td><%= colegio.nombre %></td>
+        <td><%= colegio.direccion %></td>
+        <td><%= colegio.nivel_icfes %></td>
+        <td><%= colegio.enfasis %></td>
+        <td><%= colegio.estrato %></td>
+        <td><%= link_to 'perfil', colegio %></td>
+        <td><%= link_to 'Edit', edit_colegio_path(colegio) %></td>
+        <td><%= link_to 'Destroy', colegio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Agregar Colegio', new_colegio_path, "data-no-turbolink" => true %>
+<%= link_to 'sign nuevo Admin', sign_up_path %>
+ <% end %>
+
+</div>
+</body>

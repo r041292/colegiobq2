@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nombre: MyString
+  direccion: MyString
+  nivel_icfes: MyString
+  estrato: 1
+  enfasis: MyString
+  latitud: 1
+  longitud: 1
+  suma_rankin: 1
+  numero_rankin: 1
+
+two:
+  nombre: MyString
+  direccion: MyString
+  nivel_icfes: MyString
+  estrato: 1
+  enfasis: MyString
+  latitud: 1
+  longitud: 1
+  suma_rankin: 1
+  numero_rankin: 1
