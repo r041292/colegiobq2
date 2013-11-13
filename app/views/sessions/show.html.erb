@@ -3,10 +3,8 @@
 </head>
 
 <body>
-<div class="title">TuColegioBQ
-  </div>
-  <div class="menu"><a data-no-turbolink="true" href="/colegios">INCIO</a> | BUSQUEDA AVANZADA | <a href="/adm_board">ADM</a> | CREDITOS</div>
-  </div>
+<div class="title">TuColegioBQ</div>
+  <div class="menu"><a data-no-turbolink="true" href="/colegios">INCIO</a> | <a data-no-turbolink="true" href="/colegios/avanzada">BUSQUEDA AVANZADA</a>  | <a href="/adm_board">ADM</a> | <a href="/creditos">CREDITOS</a></div>
 
   <div id="contenido_adm">
 <% if current_user %>
@@ -33,8 +31,8 @@
         <td><%= colegio.nivel_icfes %></td>
         <td><%= colegio.enfasis %></td>
         <td><%= colegio.estrato %></td>
-        <td><%= link_to 'perfil', colegio %></td>
-        <td><%= link_to 'Edit', edit_colegio_path(colegio) %></td>
+        <td><%= link_to 'perfil', colegio, "data-no-turbolink" => true %></td>
+        <td><%= link_to 'Edit', edit_colegio_path(colegio), "data-no-turbolink" => true %></td>
         <td><%= link_to 'Destroy', colegio, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -44,7 +42,7 @@
 <br>
 
 <%= link_to 'Agregar Colegio', new_colegio_path, "data-no-turbolink" => true %>
-<%= link_to 'sign nuevo Admin', sign_up_path %>
+<%= link_to 'Agregar Nuevo Admin', sign_up_path %>
  <% end %>
 
 </div>

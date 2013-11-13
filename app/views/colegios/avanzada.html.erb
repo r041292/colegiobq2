@@ -1,0 +1,45 @@
+<head>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyDZSrXvdUNa9eOsa_Fqh_Ogs5KBARM-8r8&sensor=true" %>
+<%= javascript_include_tag "http://maps.googleapis.com/maps/api/geocode/json?parameters" %>
+<%= stylesheet_link_tag "style1" %>
+</head>
+
+<body>
+
+<div class="title">TuColegioBQ</div>
+  <div class="menu"><a data-no-turbolink="true" href="/colegios">INCIO</a> | <a data-no-turbolink="true" href="/colegios/avanzada">BUSQUEDA AVANZADA</a>  | <a href="/adm_board">ADM</a> | <a href="/creditos">CREDITOS</a></div>
+
+
+<div id="map-canvas-adm"></div>
+<div id="space1">
+	<p1>Complete uno o varios cambios para realizar una busqueda mas especifica.
+	 Si desea agregar localizacion haga click en el mapa señalando el lugar donde se encuentra.</p1><br>
+	<br>
+
+	<div id="busqueda-avanzada-box">
+		<br>
+<%= form_for(:query,{url: ravanzada_colegios_path, method: :get}) do |f| %>
+		<%= f.label :nombre %>
+	  <%=f.text_field :nombre %><br/>
+	  <%= f.label :estrato %>
+	  <%=f.text_field :estrato %><br/>
+	  <%= f.label :nivel_icfes %>
+	  <%=f.text_field :nivel_icfes %><br/>
+	  <%= f.label :enfasis %>
+	  <%=f.text_field :enfasis %><br/>
+	  <%= f.hidden_field :latitude , id:"colegio_latitud" %><br />
+	  <%= f.hidden_field :longitude , id:"colegio_longitud" %>
+	  <%= check_box_tag(:all) %>
+		<%= label_tag(:all, "Ver la lista de todos los Colegios") %><br>
+	  <%= f.submit "Buscar Colegios"%><br><br>
+    <% end %>   
+	</div>
+
+</div>
+
+<%= javascript_include_tag "mapsADM" %>
+
+<%= javascript_include_tag "js-page-refresh" %>
+<input type="hidden" id="refreshed" value="no">
+
+</body>

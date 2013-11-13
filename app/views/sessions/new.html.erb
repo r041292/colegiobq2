@@ -3,20 +3,21 @@
 </head>
 
 <body>
-  <div class="title">TuColegioBQ
-  </div>
-  <div class="menu"><a data-no-turbolink="true" href="/colegios">INCIO</a> | BUSQUEDA AVANZADA | <a href="/adm_board">ADM</a> | CREDITOS</div>
-  </div>
-<div id="contenido_adm"><h1><br>Log in</h1></div>
-<%= form_tag sessions_path do %>
+  <div class="title">TuColegioBQ</div>
+  <div class="menu"><a data-no-turbolink="true" href="/colegios">INCIO</a> | <a data-no-turbolink="true" href="/colegios/avanzada">BUSQUEDA AVANZADA</a>  | <a href="/adm_board">ADM</a> | <a href="/creditos">CREDITOS</a></div>
+<div id="page-center-simple">
+
+  <h1>LOG IN</h1>
+  <%= form_tag sessions_path do %>
 	<p>
     <%= label_tag :email %><br/>
     <%= text_field_tag :email, params[:email] %>
-  </p>
-  <p>
+    <br><br>
     <%= label_tag :password %><br />
     <%= password_field_tag :password, params[:password] %>
   </p>
   <p class="button"><%= submit_tag %> </p>
   <% end %>
+
+</div>
 </body>

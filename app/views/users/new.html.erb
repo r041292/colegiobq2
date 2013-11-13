@@ -4,11 +4,11 @@
 
 <body>
 
-  <div class="title">TuColegioBQ
-  </div>
-  <div class="menu"><a data-no-turbolink="true" href="/colegios">INCIO</a> | BUSQUEDA AVANZADA | <a href="/adm_board">ADM</a> | CREDITOS</div>
-  </div>
-<h1><br><center>Sign Up</center></h1>
+  <div class="title">TuColegioBQ</div>
+ <div class="menu"><a data-no-turbolink="true" href="/colegios">INCIO</a> | <a data-no-turbolink="true" href="/colegios/avanzada">BUSQUEDA AVANZADA</a>  | <a href="/adm_board">ADM</a> | <a href="/creditos">CREDITOS</a></div>
+
+<div id="page-center-simple">
+<h1><br><center>SIGN UP</center></h1>
 <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
 	 <div class="error_messages">
@@ -23,16 +23,15 @@
   <p>
     <%= f.label :email %><br/>
     <%=f.text_field :email%>
-  </p>
-  <p>
+  <br>
     <%=f.label :password %><br/>
     <%=f.password_field :password %>
-  </p>
-  <p>
+  <br>
     <%=f.label :password_confirmation %><br/>
     <%=f.password_field :password_confirmation %>
   </p>
   <p class="button"><%= f.submit%></p>
   <% end%>
 
+</div>
 </body>

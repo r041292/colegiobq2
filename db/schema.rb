@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131028030459) do
+ActiveRecord::Schema.define(version: 20131028030823) do
 
   create_table "Schools", force: true do |t|
     t.string   "email"
@@ -29,6 +29,12 @@ ActiveRecord::Schema.define(version: 20131028030459) do
     t.float    "longitud"
     t.integer  "suma_rankin"
     t.integer  "numero_rankin"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "schools", force: true do |t|
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,0 +1,61 @@
+
+<%= form_for(@colegio) do |f| %>
+  <% if @colegio.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@colegio.errors.count, "error") %> prohibited this colegio from being saved:</h2>
+
+      <ul>
+      <% @colegio.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nombre %><br>
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="field">
+    <%= f.label :direccion %><br>
+    <%= f.text_field :direccion %>
+  </div>
+  <div class="field">
+    <%= f.label :nivel_icfes %><br>
+    <%= f.text_field :nivel_icfes %>
+  </div>
+  <div class="field">
+    <%= f.label :estrato %><br>
+    <%= f.text_field :estrato %>
+  </div>
+  <div class="field">
+    <%= f.label :enfasis %><br>
+    <%= f.text_field :enfasis %>
+  </div>
+  <div class="field">
+    <%= f.label :latitud %><br>
+    <%= f.text_field :latitud %>
+  
+  </div>
+  <div class="field">
+    <%= f.label :longitud %><br>
+    <%= f.text_field :longitud %>
+  </div>
+  <div class="field" style="display: none;">
+    <%= f.label :suma_rankin %><br>
+    <%= f.text_field :suma_rankin %>
+  </div>
+  <div class="field" style="display: none;">
+    <%= f.label :numero_rankin %><br>
+    <%= f.number_field :numero_rankin %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+  <div id="map-canvas-adm">
+  </div>
+  <%= javascript_include_tag "mapsADM" %>
+
+  <%= javascript_include_tag "js-page-refresh" %>
+<input type="hidden" id="refreshed" value="no">
+<% end %>

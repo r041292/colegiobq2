@@ -8,25 +8,26 @@
 
 <body>
 	<div class="title">TuColegioBQ</div>
-    <div class="menu"><a data-no-turbolink="true" href="/colegios">INCIO</a> | BUSQUEDA AVANZADA | <a href="/adm_board">ADM</a> | CREDITOS</div>
+  <div class="menu"><a data-no-turbolink="true" href="/colegios">INCIO</a> | <a data-no-turbolink="true" href="/colegios/avanzada">BUSQUEDA AVANZADA</a>  | <a href="/adm_board">ADM</a> | <a href="/creditos">CREDITOS</a></div>
 	<div id="map-canvas"> </div>
 	<textarea id="resultado" style="display: none;"><%= @salida%>></textarea><br>
 	<div id="space1">
+		Los colegios cercanos a su ubicacion son los siguientes:<br><br>
 		<div class="text">
-			<table class="center">
+			<table class="center" cellspacing="8">
 			  <thead>
 			    <tr>
-			      <th>Nombre</th>
-			      <th>Direccion</th>
-			      <th>Estrato</th>
-			      <th>Nivel Icfes</th>
-			      <th>Enfasis</th>
+			      <th>Nombre  </th>
+			      <th>Direccion  </th>
+			      <th>Estrato  </th>
+			      <th>Nivel Icfes  </th>
+			      <th>Enfasis  </th>
 			    </tr>
 			  </thead>
   				<tbody>
 			    <% @salida2.each do |co| %>
 			      <tr>
-			        <td><%= link_to co.nombre+'', co %></td>
+			        <td><%= link_to co.nombre+'', co ,"data-no-turbolink"  => true%></td>
 			        <td><%= co.direccion %></td>
 			        <td><%= co.estrato %></td>
 			        <td><%= co.nivel_icfes %></td>
@@ -39,4 +40,6 @@
 		</div>
 	</div>
 
+<%= javascript_include_tag "js-page-refresh" %>
+<input type="hidden" id="refreshed" value="no">
 </body>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" >
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+
+    <title>Manual TUCOLEGIOBQ</title>
+
+    <!-- Bootstrap core CSS -->
+    <%= stylesheet_link_tag "bootstrap" %>
+    
+    <!-- Custom styles for this template -->
+    <%= stylesheet_link_tag "jumbotron-narrow" %>
+    <%= stylesheet_link_tag "navbar" %>
+    <!-- Just for debugging purposes. Don't actually copy this line! -->
+   
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    
+      
+  </head>
+
+  <body bgcolor="red" >
+
+    <div class="container">
+      <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <!--<li class="active"><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>-->
+        </ul>
+        <a name="menu"></a><h3 class="text-muted" >¿Como usar TUCOLEGIOBQ ?</h3>
+        
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#inicio">Inicio</a></li>
+            <li><a href="#busqueda">Busqueda avanzada</a></li>
+            <li><a href="#admin">Administrador</a></li>
+            <li><a href="#resultados">Resultados</a></li>
+            <li><a data-no-turbolink="true" href="/colegios">Ir a TUCOLEGIOBQ</a></li>
+          </ul>
+          
+        </div><!--/.nav-collapse -->
+      </div>
+
+      <div class="jumbotron"   style="background-image: url(/images/collage.png)" >
+       
+      </div>
+      <br>
+
+      <a name="inicio"></a><H1>INICIO</H1>
+      <br>
+      <div class = "imagen">
+        <%= image_tag("inicio.png", :alt => "inicio") %>
+       <br>
+       <p>Al iniciar a navegar en TUCOLEGIOBQ, te encontrarás con un mapa en donde podrás señalar tu localización y así  encontrar los colegios más cercanos a ti.
+        </p>
+        <br>
+       <%= image_tag("dir.png", :alt => "direccion") %>
+       <p>Así como también tendrás la posibilidad de digitar tu dirección directamente para buscar los resultados.
+      </p>
+      <a href="#menu"><h4>Regresar</h4></a>
+       
+      <a name="busqueda"></a><H1>BUSQUEDA AVANZADA</H1>
+      <br>
+      
+       <%= image_tag("avanzada.png", :alt => "avanzada") %>
+       <br>
+       <p>Si tu deseo va más allá de encontrar un colegio cercano a tu casa, y quieres filtrar la búsqueda con alguna característica que te parezca importante podrás hacerlo a través la búsqueda avanzada.
+          <br>
+        Te brindamos la posibilidad de 4 filtros, Nombre, Estrato, Nivel de icfes y Enfasis.
+        </p>
+        <br>
+       <%= image_tag("todos.png", :alt => "todos") %>
+       <p>Si solo deseas ver todos los colegios podrás seleccionar la opción “Ver Lista de todos los colegios”, y así ver de cada uno de ellos su ubicación en el mapa y características.
+      </p>
+
+      <a href="#menu"><h4>Regresar</h4></a>
+      <a name="admin"></a><H1>ADMINISTRADOR</H1>
+      <br>
+      <%= image_tag("login.png", :alt => "login") %>
+       <br>
+       <p>Si deseas entrar como administrador, debes ingresar tu correo y contraseña válidos, los cuales tuvieron que ser creados igualmente por un administrador de la página. 
+      </p>
+       <%= image_tag("admin.png", :alt => "admin") %>
+       <br>
+       <p>Los administradores de la pagina tendran acceso a la base de datos total de todos los colegios, éstos además podrán agregar colegios a dicha base de datos.
+          <br>
+        
+        </p>
+        <br>
+       <%= image_tag("todos.png", :alt => "todos") %>
+       <br>
+       <p>Si solo deseas ver todos los colegios podrás seleccionar la opción “Ver Lista de todos los colegios”, y así ver de cada uno de ellos su ubicación y características.
+      </p>
+
+      <%= image_tag("newadmin.png", :alt => "newadmin") %>
+
+       <br>
+       <p>Como administrador te dará la opción de crear un nuevo administrador para que así otra persona tenga la posibilidad de agregar, editar o eliminar colegios de la base de datos.</p>
+       <br>
+       <br>
+       <br>
+       <%= image_tag("newcol.png", :alt => "newcol") %>
+       <p>Para agregar un colegio se deben llenar todos los campos del formulario, al ubicar en el mapa se agregaran los campos latitud y longitud automaticamente. </p>
+
+      
+      <a href="#menu"><h4>Regresar</h4></a>
+       <a name="resultados"></a><H1>RESULTADOS</H1>
+        <%= image_tag("perfil.png", :alt => "perfil") %>
+       <br>
+       <p>Después de cada busqueda se te arrojara una lista de los colegios cercanos o encontrados através de tu selección, esto te permitirá acceder a su perfil
+       Como se muestra en la imagen cada colegio cuenta con un perfil en donde además de mostrar sus caracteristicas y ubicación en el mapa, te da la posibilidad de ponerle una calificación de manera que sirva para referencia a otros usuarios de TUCOLEGIOBQ.
+       <br>
+       <br>
+      </p>
+
+      </div>
+
+
+
+
+      
+
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+  </body>
+  <!--<div class="footer">
+        <p>&copy; Company 2013</p>
+      </div>-->
+</html>

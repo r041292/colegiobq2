@@ -2,48 +2,66 @@
 class ColegiosController < ApplicationController
   before_action :set_colegio, only: [:show, :edit, :update, :destroy]
 
-  # GET /colegios
-  # GET /colegios.json
   def index
   end
 
-  def result
-    @colegios = Colegio.all
-    distancia = 0.0
-    tem=0
-    @salida=''
-    @salida2=[]
-    @colegios.each do |col|
-      tem=0
-      distancia =0
-      tem=(params[:query][:latitude].to_f - col.latitud)**2 +(params[:query][:longitude].to_f - col.longitud)**2
-      distancia = Math.sqrt(tem)
-      if (distancia <= 0.00899928)
-       @salida =@salida+col.nombre+','+col.latitud.to_s+','+col.longitud.to_s+';'
-       @salida2 << col
-     end
-    end
-    @salida 
-    @salida2
-  end
-  
+  def ravanzada
+    if params[:all].to_s =="1"
+      @salida=Colegio.all
+    else
+      query="SELECT * FROM colegios WHERE "
+      temp=Array.new
+      unless params[:query][:nombre].empty?
+        temp<<"nombre like '%"+params[:query][:nombre]+"%'"
+      end
+      unless params[:query][:estrato].empty?
+        temp<<"estrato = '"+params[:query][:estrato]+"'"
+      end
+      unless params[:query][:enfasis].empty?
+        temp<<"enfasis = '"+params[:query][:enfasis]+"'"
+      end
+      unless params[:query][:nivel_icfes].empty?
+        temp<<"nivel_icfes = '"+params[:query][:nivel_icfes]+"'"
+      end
+      for i in(1..temp.length) do
+        if i==temp.length
+          query=query + temp[i-1] 
+        else
+          query= query+ temp[i-1]+ " and "
+        end
+      end
+      @salida=Colegio.find_by_sql(query)
+      unless params[:query][:latitude].empty?
+        @salida2=Colegio.por_cercania(params[:query][:latitude].to_f,params[:query][:longitude].to_f)
+        @salida=@salida & @salida2
+      end
+    end 
 
-  # GET /colegios/1
-  # GET /colegios/1.json
+    @salida2=''
+
+    @salida.each do |col|
+        @salida2=@salida2+col.nombre+','+col.latitud.to_s+','+col.longitud.to_s+';'
+    end
+  end
+
+  def result
+    @salida=''
+    @salida2=Colegio.por_cercania(params[:query][:latitude].to_f,params[:query][:longitude].to_f)
+    @salida2.each do |col|
+        @salida =@salida+col.nombre+','+col.latitud.to_s+','+col.longitud.to_s+';'
+    end
+  end
+ 
   def show
   end
 
-  # GET /colegios/new
   def new
     @colegio = Colegio.new
   end
 
-  # GET /colegios/1/edit
   def edit
   end
 
-  # POST /colegios
-  # POST /colegios.json
   def create
     @colegio = Colegio.new(colegio_params)
       respond_to do |format|
@@ -55,11 +73,8 @@ class ColegiosController < ApplicationController
         format.json { render json: @colegio.errors, status: :unprocessable_entity }
       end
     end
- 
   end
 
-  # PATCH/PUT /colegios/1
-  # PATCH/PUT /colegios/1.json
   def update
     respond_to do |format|
       if @colegio.update(colegio_params)
@@ -72,8 +87,6 @@ class ColegiosController < ApplicationController
     end
   end
 
-  # DELETE /colegios/1
-  # DELETE /colegios/1.json
   def destroy
     @colegio.destroy
     respond_to do |format|
@@ -83,12 +96,11 @@ class ColegiosController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
+   
     def set_colegio
       @colegio = Colegio.find(params[:id])
     end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
     def colegio_params
       params.require(:colegio).permit(:nombre, :direccion, :nivel_icfes, :estrato, :enfasis, :latitud, :longitud, :suma_rankin, :numero_rankin)
     end

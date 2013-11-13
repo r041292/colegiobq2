@@ -1,59 +1,147 @@
 <head>
   <%= stylesheet_link_tag "star-rating" %>
   <%= javascript_include_tag "jquery-1.10.2.min.js" %>
+  <%= stylesheet_link_tag "style1" %>
+  <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyDZSrXvdUNa9eOsa_Fqh_Ogs5KBARM-8r8&sensor=true" %>
+  <%= javascript_include_tag "http://maps.googleapis.com/maps/api/geocode/json?parameters" %>
+  <%= javascript_include_tag "maps-perfil" %>
 </head>
-<p id="notice"><%= notice %></p>
 
-<p>
+<body>
+
+<div class="title">TuColegioBQ</div>
+  <div class="menu"><a data-no-turbolink="true" href="/colegios">INCIO</a> | <a data-no-turbolink="true" href="/colegios/avanzada">BUSQUEDA AVANZADA</a>  | <a href="/adm_board">ADM</a> | <a href="/creditos">CREDITOS</a></div>
+<div id="map-canvas">
+  </div>
+<div id="space1">
+    <div class="text">
+      <table class="center"  cellpadding="3">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th><i><%= @colegio.nombre %></i></th>            
+          </tr>
+        </thead>
+          
+            <tr>
+              <th>Direccion</th>
+              <th><%= @colegio.direccion %></th>
+            </tr>
+
+            <tr>
+              <th>Estrato</th>
+              <th><%= @colegio.estrato %></th>
+            </tr>
+
+            <tr>
+              <th>Nivel Icfes</th>
+              <th><%= @colegio.nivel_icfes %></th>
+            </tr>
+         
+            <tr>
+              <th>Enfasis</th>
+              <th><%= @colegio.enfasis %></th>
+            </tr>
+            <tr>
+             
+             <tr>
+              <th>No votos</th>
+              <th><%= @colegio.numero_rankin %></th>
+              <tr>
+        
+      </table>
+    </div>
+
+    <br>
+    <center> Ranking:</center><div class="ineedtocenter">
+    <span class="stars">
+     <% if @colegio.numero_rankin !=0 %>
+      <%= @colegio.suma_rankin / (@colegio.numero_rankin) %> 
+     <% else %>
+      <%=0 %>
+     <%end %>
+    </span>
+    </div>
+      <br><center>
+      Votacion del usuario:
+      <div class='movie_choice'>
+        <div class="star_1 ratings_stars"></div>
+        <div class="star_2 ratings_stars"></div>
+        <div class="star_3 ratings_stars"></div>
+        <div class="star_4 ratings_stars"></div>
+        <div class="star_5 ratings_stars"></div>
+      </div><br>
+           <%= form_for(:colegio,{url: estrella_path, method: :put}) do |f| %>
+           <%= f.hidden_field :numero_rankin , id:"numero_rankin" %><br />
+          <%= f.hidden_field :suma_rankin , id:"suma_rankin" %>
+          <%= f.submit "puntuar"%>
+           <% end %>
+
+    </center>
+
+  </div>
+
+<div id="letshide" style="display: none;">
+ <p id="notice"><%= notice %></p>
+
   <strong>Nombre:</strong>
   <%= @colegio.nombre %>
-</p>
 
-<p>
   <strong>Direccion:</strong>
   <%= @colegio.direccion %>
-</p>
 
-<p>
   <strong>Nivel icfes:</strong>
   <%= @colegio.nivel_icfes %>
-</p>
 
-<p>
   <strong>Estrato:</strong>
   <%= @colegio.estrato %>
-</p>
 
-<p>
   <strong>Enfasis:</strong>
   <%= @colegio.enfasis %>
-</p>
+
+
+
+
 
 <p>
   <strong>Latitud:</strong>
-  <%= @colegio.latitud %>
+ <div id="lat"> <%= @colegio.latitud %></div>
 </p>
+=======
+  <strong>Latitud:</strong>
+ <div id="lat"> <%= @colegio.latitud %></div>
+>>>>>>> 83ba9d7006dfec74a3eb5a963d0e3211a94c1870
 
-<p>
   <strong>Longitud:</strong>
-  <%= @colegio.longitud %>
+  <div id="lng" ><%= @colegio.longitud %></div>
+
 </p>
 
-<p>
+
   <strong>Suma ranking:</strong>
   <%= @colegio.suma_rankin %><br>
   <center>
   <span class="stars"><%= @colegio.suma_rankin %></span>
   </center>
+
+  
   </p>
 
+
 <p style="display: none;">
+
   <strong>Numero ranking:</strong>
   <%= @colegio.numero_rankin %>
-</p>
 
-<%= link_to 'Edit', edit_colegio_path(@colegio), "data-no-turbolink" => true %> |
-<%= link_to 'Back', colegios_path %>
+</p>
+</div>
+
+
+
+
+<%= link_to 'Back', colegios_path, "data-no-turbolink" => true %>
+
+<%= javascript_include_tag "starsR" %>
 
 <script>
 $.fn.stars = function() {
@@ -73,3 +161,12 @@ $(function() {
     $('span.stars').stars();
 });
 </script>
+
+<%= javascript_include_tag "js-page-refresh" %>
+<input type="hidden" id="refreshed" value="no">
+
+
+</body>
+
+
+

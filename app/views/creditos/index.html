@@ -1,0 +1,19 @@
+<head>
+<%= stylesheet_link_tag "style1" %>
+</head>
+
+<body>
+	<div class="title">TuColegioBQ</div>
+  <div class="menu"><a data-no-turbolink="true" href="/colegios">INCIO</a> | <a data-no-turbolink="true" href="/colegios/avanzada">BUSQUEDA AVANZADA</a>  | <a href="/adm_board">ADM</a> | <a href="/creditos">CREDITOS</a></div>
+
+<div id="page-center-simple">
+<h1>CREDITOS:</h1>
+<p>Adriana Gallon,Laura Garcia,Lina Torres,Rubiel Velasquez<br>
+Universidad del Norte, Ingenieria de Sistemas.<br><br>
+<%= image_tag("LogoUninorte.png", :alt => "uninorte") %><br>
+<%= image_tag("heroku-logo-.png", :alt => "heroku") %>
+</p>
+</div>
+
+<%= link_to 'Back', colegios_path,"data-no-turbolink" => true %>
+</body>
